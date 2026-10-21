@@ -76,7 +76,12 @@ public abstract class AbstractZendutyConnection extends Task implements Runnable
         private final Property<Duration> connectTimeout;
 
         @Deprecated
-        @Schema(title = "Read timeout before failing", description = "Deprecated, this option has no effect: Kestra's HTTP client has no separate read timeout. Use `readIdleTimeout` instead.")
+        @Schema(
+            title = "Read timeout before failing",
+            description = """
+                Deprecated, this option has no effect: Kestra's HTTP client has no separate read timeout. Use `readIdleTimeout` instead.
+                """
+        )
         @Builder.Default
         @PluginProperty(group = "deprecated")
         private final Property<Duration> readTimeout = Property.ofValue(Duration.ofSeconds(10));
@@ -87,13 +92,23 @@ public abstract class AbstractZendutyConnection extends Task implements Runnable
         private final Property<Duration> readIdleTimeout = Property.ofValue(Duration.of(5, ChronoUnit.MINUTES));
 
         @Deprecated
-        @Schema(title = "Connection pool idle timeout", description = "Deprecated, this option has no effect: Kestra's HTTP client does not support a connection pool idle timeout.")
+        @Schema(
+            title = "Connection pool idle timeout",
+            description = """
+                Deprecated, this option has no effect: Kestra's HTTP client does not support a connection pool idle timeout.
+                """
+        )
         @Builder.Default
         @PluginProperty(group = "deprecated")
         private final Property<Duration> connectionPoolIdleTimeout = Property.ofValue(Duration.ofSeconds(0));
 
         @Deprecated
-        @Schema(title = "Maximum response size", description = "Deprecated, this option has no effect: Kestra's HTTP client does not limit the response size.")
+        @Schema(
+            title = "Maximum response size",
+            description = """
+                Deprecated, this option has no effect: Kestra's HTTP client does not limit the response size.
+                """
+        )
         @Builder.Default
         @PluginProperty(group = "deprecated")
         private final Property<Integer> maxContentLength = Property.ofValue(1024 * 1024 * 10);
